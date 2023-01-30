@@ -1,26 +1,27 @@
 package p6_ejercicio2;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
-        String minusculas;
         String cmd;
-        cmd = "java Mayusculas.java";
+        cmd = "p6_ejercicio2.Mayusculas";
         Scanner sc = new Scanner(System.in);
-        File file = new File("Mayusculas.java");
+        String nose;
 
-        ProcessBuilder processBuilder = new ProcessBuilder(cmd);
-        Process procesoMayusculas;
-        System.out.println("Escribe lo que quieras convertir a mayusculas: ");
-        minusculas = sc.next();
+        ProcessBuilder processBuilder = new ProcessBuilder("java", cmd);
+        processBuilder.directory(new File("out/production/practica6-jvg"));
         try {
-            processBuilder.start();
+            Process procesoMayusculas = processBuilder.start();
+//            System.out.println("Escribe lo que quieras convertir a mayusculas: ");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(procesoMayusculas.getInputStream()));
+                System.out.println(bufferedReader.readLine());
+
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
+
     }
 }
