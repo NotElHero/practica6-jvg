@@ -1,19 +1,34 @@
 package p6_ejercicio1;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Suma {
-    Scanner sc = new Scanner(System.in);
-
-    public int sumarNumeros(){
+    public static void main(String[] args) throws IOException {
         int n1, n2;
-        int suma = 0;
+//        Boolean n1isNumeric = true;
+//        Boolean n2isNumeric = true;
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println("Introduce el primer numero: ");
-        n1 = sc.nextInt();
+        try {
+            System.out.println("Primer numero");
+            n1 = Integer.parseInt(bufferedReader.readLine());
+            System.out.println("Segundo numero");
+            n2 = Integer.parseInt(bufferedReader.readLine());
 
-        suma = n1 /*+ n28*/;
-
-        return suma;
+            System.out.println(n1 + n2);
+        } catch (IOException ioe){
+            ioe.printStackTrace();
+        }
     }
+
+//    public static boolean isNumeric(String numero) {
+//        try {
+//            Integer.parseInt(numero);
+//            return true;
+//        } catch(NumberFormatException e){
+//            return false;
+//        }
+//    }
 }
