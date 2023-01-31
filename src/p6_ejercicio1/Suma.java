@@ -7,40 +7,41 @@ import java.io.InputStreamReader;
 public class Suma {
     public static void main(String[] args) {
         String cadenan1 = null, cadenan2 = null;
-        int n1 = 0, n2 = 0;
-//        Boolean n1isNumeric = true;
-//        Boolean n2isNumeric = true;
+        int n1, n2;
+        Boolean isNumeric = false;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
         try {
-            while (cadenan1.equals(null) && cadenan1 == String.valueOf(cadenan1)) {
+            do {
                 System.out.println("Primer numero");
                 cadenan1 = bufferedReader.readLine();
+            } while (isNumeric(cadenan1, isNumeric) == false);
+            n1 = Integer.parseInt(cadenan1);
+            isNumeric = false;
 
-                for (int i = 0; i < cadenan1.length(); i++){
-                    char c = cadenan1.charAt(i);
-                    if (c < '0' || c > '9') {
-
-                    }
-                }
-            }
-
-            if (!(Integer.valueOf(n2) < 0) && !(Integer.valueOf(n2) > 9)) {
+            do {
                 System.out.println("Segundo numero");
-                n2 = Integer.parseInt(bufferedReader.readLine());
-            }
+                cadenan2 = bufferedReader.readLine();
+             }while (isNumeric(cadenan2, isNumeric) == false);
+            n2 = Integer.parseInt(cadenan2);
+
             System.out.println(n1 + n2);
         } catch (IOException ioe){
             ioe.printStackTrace();
         }
     }
-
-//    public static boolean isNumeric(String numero) {
-//        try {
-//            Integer.parseInt(numero);
-//            return true;
-//        } catch(NumberFormatException e){
-//            return false;
-//        }
-//    }
+    public static Boolean isNumeric(String cadena, Boolean isNumeric){
+        for (int i = 0; i < cadena.length(); i++){
+            char c = cadena.charAt(i);
+            if (c == '0' || c == '1' || c == '2' || c == '3' || c == '4' || c == '5' || c == '6' || c == '7' || c == '8' || c == '9') {
+                isNumeric = true;
+            } else {
+                isNumeric = false;
+            }
+        }
+        if (isNumeric == false){
+            System.out.println("Introduce un numero entero");
+        }
+        return isNumeric;
+    }
 }
