@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 
 public class Suma {
     public static void main(String[] args) {
-        String cadenan1 = null, cadenan2 = null;
+        String cadenan1, cadenan2;
         int n1, n2;
         Boolean isNumeric = false;
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
@@ -24,8 +24,8 @@ public class Suma {
                 cadenan2 = bufferedReader.readLine();
              }while (isNumeric(cadenan2, isNumeric) == false);
             n2 = Integer.parseInt(cadenan2);
+            System.out.println("Suma: " + (n1 + n2));
 
-            System.out.println(n1 + n2);
         } catch (IOException ioe){
             ioe.printStackTrace();
         }

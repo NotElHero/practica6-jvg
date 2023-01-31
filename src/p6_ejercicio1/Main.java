@@ -14,21 +14,17 @@ public class Main {
 
         try {
             Process procesoSuma = processBuilder.start();
-
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(procesoSuma.getOutputStream()));
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(procesoSuma.getInputStream()));
 
-            System.out.println(bufferedReader.readLine());
-            bufferedWriter.write(sc.nextLine() + "\n");
-            bufferedWriter.flush();
-
-            System.out.println(bufferedReader.readLine());
-            bufferedWriter.write(sc.nextLine() + "\n");
-            bufferedWriter.flush();
-
+            while (procesoSuma.isAlive()) {
+                System.out.println(bufferedReader.readLine().toString());
+                bufferedWriter.write(sc.nextLine() + "\n");
+                bufferedWriter.flush();
+                System.out.println(bufferedReader.readLine().toString());
+            }
             bufferedWriter.close();
 
-            System.out.println(bufferedReader.readLine());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
